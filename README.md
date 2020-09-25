@@ -23,6 +23,6 @@ django.__version__
 ```
 
 ## Initializing the Server
-- change directory to 'Enso': cd `TechTrack`
+- change directory to 'DBS-TechTrack': cd `TechTrack`
 - run the server: `python manage.py runserver`
 - once done, you can deactivate the virtual environment: `venv\bin\deactivate`
