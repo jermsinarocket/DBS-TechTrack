@@ -7,7 +7,7 @@ DBS Tech Track
 - Ensure VirtualEnv is Installed : `pip install virtualenv`
 
 ## Set Up
-- change directory to 'SEProject': `cd DBS-TechTrack`
+- change directory to 'DBS-TechTrack': `cd DBS-TechTrack`
 - create a new virtual environment: `virtualenv venv`
 - activate the virtual environment: `venv\Scripts\activate`
 - update pip and setuptools to latest version: `python -m pip install --upgrade pip setuptools`
