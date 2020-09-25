@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+  <style>
+    .input-row {
+      display: flex;
+      align-items: center;
+      padding: 10px
+    }
+
+    .input-text {
+      padding-right: 10px;
+      font-family: Arial;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .input-box {
+      height: 30px;
+      border: 1px solid #BFC6DA;
+    }
+
+    .button {
+      color: black;
+      background-color: #848A9D;
+      padding: 5px 24px;
+      border: none;
+    }
+
+    .overall {
+      padding: 10px
+    }
+
+    </style>
+<body>
+<h2>DBS Tech-Track</h2>
+  <div class="overall">
+    <div class="input-row">
+      <label class="input-text" for="custName">Name:</label><br>
+      <input class="input-box" type="text" id="custName" name="custName"><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" for="custAge">Age:</label><br>
+      <input class="input-box" type="text" id="custAge" name="custAge"><br><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" for="DOB">Date of birth:</label><br>
+      <input class="input-box" type="date" id="DOB" name="DOB"><br><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" for="serviceOfficerName">Service Officer Name:</label><br>
+      <input class="input-box" type="text" id="serviceOfficerName" name="serviceOfficerName"><br><br>
+    </div>
+
+    <div class="input-row">
+      <label class="input-text" for="NRIC">NRIC:</label><br>
+      <input class="input-box" type="text" id="NRIC" name="NRIC"><br><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" for="branchCode">Branch Code:</label><br>
+      <input class="input-box" type="text" id="branchCode" name="branchCode"><br><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" for="img">Select image:</label><br>
+      <input type="file" id="img" name="img" accept="image/*"><br><br>
+    </div>
+    <div class="input-row">
+      <label class="input-text" id="productType" for="productType">Product Type:</label><br>
+      <div>
+        <input type="checkbox" name="productType"  value="00">
+        <label style="padding-left: 5px"> Investor</label><br>
+        <input type="checkbox" name="productType"  value="01">
+        <label style="padding-left: 5px"> Insurance</label><br>
+        <input type="checkbox" name="productType"  value="02">
+        <label style="padding-left: 5px"> Loans</label><br>
+        <input type="checkbox" name="productType" value="03" >
+        <label style="padding-left: 5px"> Savings</label><br>
+        <input type="checkbox" name="productType" value="04" >
+        <label style="padding-left: 5px" >Credit card</label><br>
+      </div>
+
+    </div>
+    <button class= "button" id='submit' style="background-color: #D3D3D3; padding: 10px 15px" >Submit</button>
+  </div>
+</body>
+</html>
+<script>
+  $(document).ready(function(){
+    $('#submit').click(function(){
+    const customerName = document.getElementById('custName').value
+    const customerAge = document.getElementById('custAge').value
+    const customerDOB = document.getElementById('DOB').value
+    const serviceOfficerName = document.getElementById('serviceOfficerName').value
+    const NRIC = document.getElementById('NRIC').value
+    const branchCode = document.getElementById('branchCode').value
+    const image = document.getElementById('img').value
+    const productType = [];
+    $.each($("input[name='productType']:checked"), function(){
+      productType.push($(this).val());
+    });
+    $.ajax({
+    url: "http://techtrek2020.ap-southeast-1.elasticbeanstalk.com/validateForm",
+    headers: {
+        'Accept':'application/json',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + localStorage.getItem('SavedToken')
+    },
+    method: "POST",
+
+    // beforeSend: function(xhr) {
+    //     xhr.setRequestHeader("Content-Type", "application/json");
+    //     xhr.setRequestHeader('Authorization', 'Bearer ${'+ localStorage.getItem('SavedToken') + '}');
+          
+    // },
+
+
+    
+    data: {
+      customerName: customerName,
+      customerAge: customerAge,
+      customerDOB: customerDOB,
+      serviceOfficerName: serviceOfficerName,
+      NRIC: NRIC,
+      branchCode: branchCode,
+      image: "",
+      productType: productType
+    },
+    dataType: 'json',
+    success: function (result, status, xhr) {
+        ShowData(result);
+    },
+    error: function (xhr, status, error) {
+         alert(error);
+    }
+    });
+   })
+  })
+  </script>
+  
