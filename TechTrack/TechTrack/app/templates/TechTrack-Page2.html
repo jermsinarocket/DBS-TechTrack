@@ -6,67 +6,83 @@
       align-items: center;
       padding: 10px
     }
+
     .input-text {
       padding-right: 10px;
+      font-family: Arial;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
     }
 
     .input-box {
-      height: 25px;
+      height: 30px;
+      border: 1px solid #BFC6DA;
     }
 
     .button {
       color: white;
       background-color: #848A9D;
-      padding: 5px 24px
+      padding: 5px 24px;
+      border: none;
     }
 
     .overall {
       padding: 10px
     }
+
     </style>
 <body>
 <h2>DBS Tech-Track</h2>
-
 <form action="/credentials.php">
   <div class="overall">
     <div class="input-row">
       <label class="input-text" for="custName">Name:</label><br>
-      <input class="input-box" type="text" id="custName" name="custName" value="cust1"><br>
+      <input class="input-box" type="text" id="custName" name="custName"><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="custAge">Age:</label><br>
-      <input class="input-box" type="text" id="custAge" name="custAge" value="Age"><br><br>
+      <input class="input-box" type="text" id="custAge" name="custAge"><br><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="DOB">Date of birth:</label><br>
-      <input class="input-box" type="text" id="DOB" name="DOB" value="DOB"><br><br>
+      <input class="input-box" type="date" id="DOB" name="DOB"><br><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="serviceOfficerName">Service Officer Name:</label><br>
-      <input class="input-box" type="text" id="serviceOfficerName" name="serviceOfficerName" value="serviceOfficerName"><br><br>
+      <input class="input-box" type="text" id="serviceOfficerName" name="serviceOfficerName"><br><br>
     </div>
 
     <div class="input-row">
       <label class="input-text" for="NRIC">NRIC:</label><br>
-      <input class="input-box" type="text" id="NRIC" name="NRIC" value="NRIC"><br><br>
+      <input class="input-box" type="text" id="NRIC" name="NRIC"><br><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="branchCode">Branch Code:</label><br>
-      <input class="input-box" type="text" id="branchCode" name="branchCode" value="branchCode"><br><br>
+      <input class="input-box" type="text" id="branchCode" name="branchCode"><br><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="img">Select image:</label><br>
-      <input class="input-box" type="file" id="img" name="img" accept="image/*"><br><br>
+      <input type="file" id="img" name="img" accept="image/*"><br><br>
     </div>
     <div class="input-row">
       <label class="input-text" for="productType">Product Type:</label><br>
-      <input class="input-box" type="text" id="productType" name="productType" value="productType"><br><br>
+      <div>
+        <input type="checkbox" name="productType[]">
+        <label style="padding-left: 5px"> Investor</label><br>
+        <input type="checkbox" name="productType[]">
+        <label style="padding-left: 5px"> Insurance</label><br>
+        <input type="checkbox" name="productType[]">
+        <label style="padding-left: 5px"> Loans</label><br>
+        <input type="checkbox" name="productType[]">
+        <label style="padding-left: 5px"> Savings</label><br>
+        <input type="checkbox" name="productType[]">
+        <label style="padding-left: 5px" >Credit card</label><br>
+      </div>
+
     </div>
     <input class= "button"  type="submit" value="Submit">
-
   </div>
-
 </form>
-
 </body>
 </html>
