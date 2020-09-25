@@ -27,7 +27,7 @@ SECRET_KEY = '4zj*-@_wfmeh!c079_me@tqz)3fpz8o_ltmw%6$4uw#x(9x5uf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dbs-techtrack.herokuapp.com/']
 
 
 # Application definition
@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'TechTrack',
+    'TechTrack.app.models',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware'
 ]
 
 ROOT_URLCONF = 'TechTrack.urls'
@@ -90,10 +94,10 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'd8cjpck2l7dird',
-        'USER': 'xbcbycibcvbzkd',
-        'PASSWORD':'410bfa64bdf1d4054cc46faa79029e6496dde513cd4a50314066f513c5706d5f',
-        'HOST':'ec2-54-86-170-8.compute-1.amazonaws.com',
+        'NAME' : 'dam01sp7dlt4rt',
+        'USER': 'ftybqfzqqoretv',
+        'PASSWORD':'65e8ed09f57d878ac22849649be102a7eafa8d6f2ec7255aec02c58257f7f4e1',
+        'HOST':'ec2-54-160-120-28.compute-1.amazonaws.com',
         'PORT':'5432',
     }
 
@@ -144,6 +148,10 @@ LOGOUT_REDIRECT_URL = ''
 
 STATIC_URL = 'TechTrack/static/'
 STATIC_ROOT = 'TechTrack/staticfiles/'
+
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 import django_heroku
